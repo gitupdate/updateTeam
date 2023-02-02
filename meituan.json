@@ -19,7 +19,6 @@
     {"type":"App", "block":"xsqhb",             "name":"限时抢红包"},
     {"type":"App", "block":"ddjyq",             "name":"点点就有钱"},
     {"type":"App", "block":"mrzq" ,             "name":"每日赚钱"},
-    {"type":"Wx",  "block":"mrzq" ,             "name":"每日赚钱"},
     {"type":"Wx",  "block":"mrcj" ,             "name":"每日抽奖"},
     {"type":"Wx",  "block":"zml"  ,             "name":"赚米粒"},
     {"type":"App", "block":"lxqd" ,             "name":"连续签到"},
