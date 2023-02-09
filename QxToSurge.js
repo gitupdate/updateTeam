@@ -20,7 +20,7 @@ let req = $request.url.replace(/_surge$/,'')
 let fileName = req.replace(/(.*?\/)*(.+)?\..+/ig, "$2") || '未知'
 let version = '2023.02.09'
 let name = '#!name= ' + fileName;
-let desc = `#!desc= ${fileName}自动转换 版本: ${version} ${new Date().toLocaleString()}`;
+let desc = `#!desc= ${fileName}自动转换 版本：${version} 转换时间：${new Date().toLocaleString()}`;
 
 !(async () => {
   let body = await http(req);
