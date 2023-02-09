@@ -126,7 +126,18 @@ ${HeaderRewrite}
 ${MapLocal}
 ${MITM}`.replace(/\;/g, '#')
   console.log(`Qx重写 ${fileName} 转换Surge成功`);
-  $done({ response: { status: 200 ,body:body } });
+  $done({ response: 
+   { 
+    status: 200 ,
+    body: body,
+    headers: {
+        'Content-Type': 'text/javascript; charset=UTF-8',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'POST,GET,OPTIONS,PUT,DELETE',
+        'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
+    },
+  }
+  });
 })()
     .catch((e) => {
       e && $notification.post(`${e}`,'','');
