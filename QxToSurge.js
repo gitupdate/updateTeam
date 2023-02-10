@@ -115,7 +115,7 @@ let desc = `#!desc= ${fileName}自动转换 版本：${version} 转换时间：$
 
   HeaderRewrite = (HeaderRewrite[0] || '') && `[Header Rewrite]\n${HeaderRewrite.join("\n")}`;
 
-  MapLocal = (MapLocal[0] || '') && `[MapLocal]\n${MapLocal.join("\n")}`;
+  MapLocal = (MapLocal[0] || '') && `[Map Local]\n${MapLocal.join("\n")}`;
 
   body = `${name}
 ${desc}
