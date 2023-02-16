@@ -154,6 +154,6 @@ function http(req) {
     }
   }
   return new Promise((resolve, reject) => $httpClient.get(opt, (err, resp, data) => {
-    resp.status === 200 ? resolve(data) : reject();
+    resp?.status === 200 ? resolve(data) : reject();
   }))
 }
