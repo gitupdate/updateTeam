@@ -1,6 +1,5 @@
 #!name=QX重写格式转Surge
 #!desc=QX链接加上"_surge"后直接引用为Surge格式的模块链接
-#!system=ios
 
 [Script]
 格式转换 = type=http-request,pattern=_surge$,requires-body=1,max-size=0,timeout=30,script-path=https://raw.githubusercontent.com/gitupdate/updateTeam/master/QxToSurge.js
