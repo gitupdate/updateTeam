@@ -18,7 +18,7 @@ hostname = %APPEND% github.com:443, raw.githubusercontent.com:443, gist.githubus
 // 需要转换的 Qx 重写脚本文件
 let req = $request.url.replace(/_surge$/,'')
 let fileName = req.replace(/(.*?\/)*(.+)?\..+/ig, "$2") || '未知'
-let version = '2023.02.10'
+let version = '2023.02.18'
 let name = '#!name= ' + fileName;
 let desc = `#!desc= ${fileName}自动转换 版本：${version} 转换时间：${new Date().toLocaleString()}`;
 
@@ -46,7 +46,7 @@ let desc = `#!desc= ${fileName}自动转换 版本：${version} 转换时间：$
           } else {
             let requires = x.match('-header') ? "0" : "1";
             let proto = x.match('proto.js') ? ',binary-body-mode=1' : '';
-            script.push(x.replace(/([^\s]+)\surl\sscript-(response|request)[^\s]+\s(http.+\/(.+)\.js)/, `$4 = type=http-$2,pattern=$1,requires-body=${requires}${proto},max-size=0,script-path=$3,script-update-interval=0`,),);
+            script.push(x.replace(/([^\s]+)\surl\sscript-(response|request)[^\s]+\s(http.+\/(.+)\.js)/, `$4 = type=http-$2,pattern=$1,requires-body=${requires}${proto},max-size=3145728,timeout=60,script-path=$3,script-update-interval=0`,),);
           }
           break;
 
