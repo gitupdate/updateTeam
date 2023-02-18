@@ -113,13 +113,13 @@ let desc = `#!desc= ${fileName}自动转换 版本：${version} 转换时间：$
     }
   }); //循环结束
 
-  script = (script[0] || '') && `[Script]\n${script.join("\n")}`;
+  script = (script[0] || '') && `[Script]\n${script.join("\n\n")}`;
 
-  URLRewrite = (URLRewrite[0] || '') && `[URL Rewrite]\n${URLRewrite.join("\n")}`;
+  URLRewrite = (URLRewrite[0] || '') && `[URL Rewrite]\n${URLRewrite.join("\n\n")}`;
 
-  HeaderRewrite = (HeaderRewrite[0] || '') && `[Header Rewrite]\n${HeaderRewrite.join("\n")}`;
+  HeaderRewrite = (HeaderRewrite[0] || '') && `[Header Rewrite]\n${HeaderRewrite.join("\n\n")}`;
 
-  MapLocal = (MapLocal[0] || '') && `[Map Local]\n${MapLocal.join("\n")}`;
+  MapLocal = (MapLocal[0] || '') && `[Map Local]\n${MapLocal.join("\n\n")}`;
 
   body = `${name}
 ${desc}
