@@ -46,7 +46,11 @@ let desc = `#!desc= ${fileName}自动转换 版本：${version} 转换时间：$
           } else {
             let requires = x.match('-header') ? "0" : "1";
             let proto = x.match('proto.js') ? ',binary-body-mode=1' : '';
-            script.push(x.replace(/([^\s]+)\surl\sscript-(response|request)[^\s]+\s(http.+\/(.+)\.js)/, `$4_${y} = type=http-$2,pattern=$1,requires-body=${requires}${proto},max-size=3145728,timeout=60,script-path=$3,script-update-interval=0`,),);
+            // 修复在Surge的正则bug
+            let urlInNum = x.replace(/\x20{2,}/g, " ").split(" ").indexOf("url");
+            let ptn = x.replace(/\x20{2,}/g, " ").split(" ")[urlInNum - 1].replace(/^#/, "");
+            ptn = ptn.replace(/(.+,.+)/, '"$1"');
+            script.push(x.replace(/([^\s]+)\surl\sscript-(response|request)[^\s]+\s(http.+\/(.+)\.js)/, `$4_${y} = type=http-$2,pattern=${ptn},requires-body=${requires}${proto},max-size=3145728,timeout=60,script-path=$3,script-update-interval=0`,),);
           }
           break;
 
