@@ -42,17 +42,17 @@ let desc = `#!desc= ${fileName}自动转换 版本：${version} 转换时间：$
 
           if (x.match('echo')) {
             // throw '脚本不支持通用'
-            script.push(x.replace(/([^\s]+)\surl\sscript-echo-response+\s(http.+\/(.+)\.js)/, `$3 = type=http-request,pattern=$1,script-path=$2`,),);
+            script.push(x.replace(/([^\s]+)\surl\sscript-echo-response+\s(http.+\/(.+)\.js)/, `$3_${y} = type=http-request,pattern=$1,script-path=$2`,),);
           } else {
             let requires = x.match('-header') ? "0" : "1";
             let proto = x.match('proto.js') ? ',binary-body-mode=1' : '';
-            script.push(x.replace(/([^\s]+)\surl\sscript-(response|request)[^\s]+\s(http.+\/(.+)\.js)/, `$4 = type=http-$2,pattern=$1,requires-body=${requires}${proto},max-size=3145728,timeout=60,script-path=$3,script-update-interval=0`,),);
+            script.push(x.replace(/([^\s]+)\surl\sscript-(response|request)[^\s]+\s(http.+\/(.+)\.js)/, `$4_${y} = type=http-$2,pattern=$1,requires-body=${requires}${proto},max-size=3145728,timeout=60,script-path=$3,script-update-interval=0`,),);
           }
           break;
 
         case "enabled=":
           z[y - 1]?.match("#") && script.push(z[y - 1]);
-          script.push(x.replace(/(.+\*)\s([^\,]+).+?\=([^\,]+).+/, `$3 = type=cron,script-path=$2,timeout=60,cronexp=$1,wake-system=1`,),);
+          script.push(x.replace(/(.+\*)\s([^\,]+).+?\=([^\,]+).+/, `$3_${y} = type=cron,script-path=$2,timeout=60,cronexp=$1,wake-system=1`,),);
           break;
 
         case "url reject":
